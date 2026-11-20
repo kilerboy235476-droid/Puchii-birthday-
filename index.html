@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Puchii ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffe0ec, #fff1f5);
+  color: #7b3151;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+#birthdayPage {
+  display: none;
+  padding-top: 36px;
+}
+
+h1 {
+  color: #d63384;
+}
+
+.envelope-wrap {
+  margin: 28px auto;
+  cursor: pointer;
+  perspective: 900px;
+}
+
+.envelope {
+  width: min(82vw, 300px);
+  height: 190px;
+  position: relative;
+  background: #ff8fb8;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px #b84d7840;
+}
+
+.envelope:before,
+.envelope:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  z-index: 2;
+  border-style: solid;
+}
+
+.envelope:before {
+  left: 0;
+  border-width: 95px 150px 0 0;
+  border-color: transparent #ffb0ca transparent transparent;
+}
+
+.envelope:after {
+  right: 0;
+  border-width: 0 150px 95px 0;
+  border-color: transparent transparent #f77eaa transparent;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 4;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 105px solid #f46f9f;
+  transform-origin: top;
+  transition: transform 1s ease;
+}
+
+.seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 88px;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d6336c;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  transition: opacity .3s;
+}
+
+.letter {
+  position: absolute;
+  z-index: 1;
+  left: 8%;
+  bottom: 12px;
+  width: 84%;
+  height: 150px;
+  padding: 24px 8px;
+  background: #fffafc;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: bold;
+  transition: transform 1s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.envelope.open .letter {
+  transform: translateY(-105px);
+}
+
+.hint {
+  color: #a34b70;
+}
+
+.music-box {
+  margin: 18px auto;
+  padding: 16px;
+  max-width: 420px;
+  width: 100%;
+  background: #ffffffb8;
+  border-radius: 16px;
+}
+
+button {
+  border: 0;
+  border-radius: 22px;
+  padding: 11px 18px;
+  margin: 6px;
+  background: #e75491;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #a85b8b;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 620px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px #8e45652b;
+}
+
+.message {
+  max-width: 620px;
+  line-height: 1.7;
+  background: #ffffffa8;
+  padding: 18px;
+  border-radius: 16px;
+  margin: 12px auto 30px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: floatUp 6s linear infinite;
+  opacity: .75;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: .8;
+  }
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .envelope {
+    height: 170px;
+  }
+
+  .envelope:before {
+    border-width: 85px 41vw 0 0;
+  }
+
+  .envelope:after {
+    border-width: 0 41vw 85px 0;
+  }
+
+  .flap {
+    border-left-width: 41vw;
+    border-right-width: 41vw;
+    border-top-width: 95px;
+  }
+
+  .gallery img {
+    height: 145px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECRET ENVELOPE PAGE -->
+
+<section id="secretPage" class="screen">
+
+  <h1>💌 A Little Surprise For Puchii</h1>
+
+  <p>Someone special has a surprise waiting for you...</p>
+
+  <div class="envelope-wrap" id="openEnvelope">
+
+    <div class="envelope" id="envelope">
+
+      <div class="letter">
+        For My Puchii ❤️
+      </div>
+
+      <div class="flap"></div>
+
+      <div class="seal">❤</div>
+
+    </div>
+
+  </div>
+
+  <p class="hint">
+    Tap the envelope to open your letter ✨
+  </p>
+
+  <audio id="birthdayAudio"
+         src="birthday-song.mp3"
+         preload="auto"
+         loop>
+  </audio>
+
+</section>
+
+
+<!-- BIRTHDAY PAGE -->
+
+<section id="birthdayPage" class="screen">
+
+  <h1>🎂 Happy Birthday Puchii! 🎉</h1>
+
+  <p>To My Most Special Bestie 🫂❤️</p>
+
+  <div class="music-box">
+
+    <h3>🎵 Birthday Music</h3>
+
+    <p id="musicStatus">
+      Your birthday song starts when you open the letter.
+    </p>
+
+    <button onclick="playBirthday()">
+      Play Birthday Song
+    </button>
+
+    <button class="secondary" onclick="playRomantic()">
+      Play Romantic Music
+    </button>
+
+    <button class="secondary" onclick="stopMusic()">
+      Stop Music
+    </button>
+
+    <audio id="romanticAudio"
+           src="romantic-music.mp3"
+           preload="none"
+           loop>
+    </audio>
+
+  </div>
+
+
+  <h2>My Mommy  😍</h2>
+
+  <div class="gallery">
+
+    <img src="photo1.jpg" alt="Memory 1">
+
+    <img src="photo2.jpg" alt="Memory 2">
+
+    <img src="photo3.jpg" alt="Memory 3">
+
+    <img src="photo4.jpg" alt="Memory 4">
+
+  </div>
+
+
+  <div class="message">
+
+    <h2>A Special Message for You 💗</h2>
+
+    <p>
+      Happy Birthday to my amazing best friend!
+      May your day be filled with happiness,
+      laughter, love, and everything that makes
+      you smile.
+
+      Thank you for being such a beautiful part
+      of my life. Keep shining and stay the
+      wonderful person you are.
+
+      Lots of love! ❤️
+    </p>
+
+  </div>
+
+</section>
+
+
+<script>
+
+const secretPage = document.getElementById("secretPage");
+const birthdayPage = document.getElementById("birthdayPage");
+const envelope = document.getElementById("envelope");
+
+const birthdayAudio = document.getElementById("birthdayAudio");
+const romanticAudio = document.getElementById("romanticAudio");
+
+const musicStatus = document.getElementById("musicStatus");
+
+let opened = false;
+
+
+// OPEN LETTER AND START SONG
+
+function openLetter() {
+
+  if (opened) return;
+
+  opened = true;
+
+  envelope.classList.add("open");
+
+  // Attempt to play music directly from the tap gesture.
+  birthdayAudio.play().then(() => {
+
+    musicStatus.textContent =
+      "Now playing: Happy Birthday 🎂";
+
+  }).catch(() => {
+
+    musicStatus.textContent =
+      "Tap Play Birthday Song if automatic playback is blocked.";
+
+  });
+
+
+  setTimeout(() => {
+
+    secretPage.style.display = "none";
+
+    birthdayPage.style.display = "flex";
+
+    createHearts();
+
+  }, 1600);
+
+}
+
+
+document.getElementById("openEnvelope")
+.addEventListener("click", openLetter);
+
+
+// PLAY BIRTHDAY SONG
+
+function playBirthday() {
+
+  romanticAudio.pause();
+  romanticAudio.currentTime = 0;
+
+  birthdayAudio.play().then(() => {
+
+    musicStatus.textContent =
+      "Now playing: Happy Birthday 🎂";
+
+  }).catch(() => {
+
+    musicStatus.textContent =
+      "Check that birthday-song.mp3 is in your folder.";
+
+  });
+
+}
+
+
+// PLAY ROMANTIC MUSIC
+
+function playRomantic() {
+
+  birthdayAudio.pause();
+  birthdayAudio.currentTime = 0;
+
+  romanticAudio.play().then(() => {
+
+    musicStatus.textContent =
+      "Now playing: Romantic Music 💗";
+
+  }).catch(() => {
+
+    musicStatus.textContent =
+      "Check that romantic-music.mp3 is in your folder.";
+
+  });
+
+}
+
+
+// STOP MUSIC
+
+function stopMusic() {
+
+  birthdayAudio.pause();
+  romanticAudio.pause();
+
+  musicStatus.textContent = "Music stopped.";
+
+}
+
+
+// FLOATING HEARTS
+
+function createHearts() {
+
+  for (let i = 0; i < 18; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+      Math.random() > 0.5 ? "💗" : "💕";
+
+    heart.style.left =
+      Math.random() * 100 + "vw";
+
+    heart.style.animationDelay =
+      Math.random() * 5 + "s";
+
+    heart.style.fontSize =
+      (16 + Math.random() * 18) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
